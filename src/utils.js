@@ -1,15 +1,17 @@
-import billionaireData from "./billionaire-data";
+import data from "./data";
 import { noDataColor, stateColorMap } from "./constants";
 
-export function getBillionaireDataByState(id) {
-  return billionaireData.find(state => parseInt(state.id) === parseInt(id));
+export function getDataByState(id) {
+  return data.find(state => parseInt(state.id) === parseInt(id)) || {};
 }
 
 export function getStateColor(state) {
-  const stateData = getBillionaireDataByState(state.id);
-  const { billionaires } = stateData;
+  const stateData = getDataByState(state.id);
+  const { topHeavyIndex } = stateData;
+
+  if (stateData.billionaires === 0) return noDataColor;
 
   return stateColorMap.reduce((result, current) => {
-    return billionaires >= current.start ? current.color : result;
+    return topHeavyIndex >= current.start ? current.color : result;
   }, noDataColor);
 }

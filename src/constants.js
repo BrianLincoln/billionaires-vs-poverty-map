@@ -1,43 +1,31 @@
-export const noDataColor = "#cc0";
+export const noDataColor = "#aaa";
 export const stateColorMap = [
   {
     start: 0,
-    color: "#fff"
+    color: "#fcde9c"
   },
   {
-    start: 1,
-    color: "#eee"
-  },
-  {
-    start: 2,
-    color: "#ddd"
-  },
-  {
-    start: 5,
-    color: "#ccc"
-  },
-  {
-    start: 10,
-    color: "#bbb"
-  },
-  {
-    start: 20,
-    color: "#aaa"
-  },
-  {
-    start: 40,
-    color: "#888"
-  },
-  {
-    start: 60,
-    color: "#888"
-  },
-  {
-    start: 80,
-    color: "#666"
+    start: 50,
+    color: "#faa476"
   },
   {
     start: 100,
-    color: "#444"
+    color: "#f0746e"
+  },
+  {
+    start: 200,
+    color: "#e34f6f"
+  },
+  {
+    start: 300,
+    color: "#dc3977"
+  },
+  {
+    start: 400,
+    color: "#b9257a"
+  },
+  {
+    start: 800,
+    color: "#7c1d6f"
   }
 ];

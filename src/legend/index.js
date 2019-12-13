@@ -1,6 +1,13 @@
 import { stateColorMap } from "../constants";
 
 export function generateLegend() {
+  // create description
+  const description = document.createElement("small");
+  const descriptionTextNode = document.createTextNode(
+    "Top Heavy Index (see below)"
+  );
+  description.appendChild(descriptionTextNode);
+
   // create <ul>
   const list = document.createElement("ul");
   list.classList.add("legend");
@@ -28,6 +35,8 @@ export function generateLegend() {
   // add <ul> to page
   const targetElement = document.getElementById("color-legend-target");
   targetElement.appendChild(list);
+
+  targetElement.appendChild(description);
 }
 
 function getLegendItemText(range, index) {

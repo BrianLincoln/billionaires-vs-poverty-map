@@ -5,18 +5,23 @@
     <title></title>
     <style>
       body {
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-family: Georgia, "Times New Roman", Times, serif sans-serif;
         margin: 0;
         padding: 0;
       }
       h1 {
         background: #333;
         color: #fff;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 22px;
         padding: 25px 0;
         margin: 0 0 25px 0;
         text-align: center;
       }
       h2 {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      .selected-state {
         text-align: center;
       }
       .map-wrapper {
@@ -60,6 +65,17 @@
         width: 20px;
       }
 
+      .footer {
+        background: #444;
+        color: #fff;
+        padding: 25px;
+      }
+
+      .footer a,
+      .footer a:visited {
+        color: #fff;
+      }
+
       @media all and (min-width: 650px) {
         .map-wrapper {
           flex-direction: row;
@@ -69,19 +85,34 @@
   </head>
 
   <body>
-    <h1>Billionaires by state</h1>
-    <h2 id="current-state">click a state</h2>
+    <h1>People in poverty (thousand) per billionaire by state</h1>
     <div class="map-wrapper">
       <svg class="map" id="map-target"></svg>
       <div id="color-legend-target" class="color-legend"></div>
     </div>
-    <small>
-      Source:
-      <a
-        href="https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires"
-        >https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires</a
-      >
-      taken 12/13/2019
-    </small>
+    <div class="selected-state" id="selected-state">
+      <h2>click a state</h2>
+    </div>
+    <div class="footer">
+      <p>
+        I made up the "top heavy index". It is calculated by dividing the number
+        of people in poverty (thousands) by the number of billionaires.
+      </p>
+      Sources (taken on taken 12/13/2019):
+      <ol>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires"
+            >https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate"
+            >https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate</a
+          >
+        </li>
+      </ol>
+    </div>
   </body>
 </html>

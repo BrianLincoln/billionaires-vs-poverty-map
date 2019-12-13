@@ -1,9 +1,12 @@
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 
-import { getBillionaireDataByState, getStateColor } from "../utils";
+import { getDataByState, getStateColor } from "../utils";
+import data from "../data";
 
 export function generateMap() {
+  console.log("Merry Christmas, ya filthy animal:", data);
+
   const svg = d3
     .select("#map-target")
     .attr("preserveAspectRatio", "xMinYMin meet")
@@ -33,8 +36,72 @@ const fetchMapData = async () => {
 };
 
 function handleClick(d) {
-  const label = document.getElementById("current-state");
-  const { name, billionaires } = getBillionaireDataByState(d.id);
+  const stateData = getDataByState(d.id);
+  const { name, billionaires } = stateData;
 
-  label.innerHTML = `There are ${billionaires} billionaires in ${name}`;
+  // create container
+  const container = document.createElement("div");
+
+  // title (state name)
+  const title = document.createElement("h2");
+  const titleText = document.createTextNode(name);
+  title.appendChild(titleText);
+
+  const information = generateStateInfoElement(stateData);
+
+  container.appendChild(title);
+  container.appendChild(information);
+
+  // add container to page
+  const targetElement = document.getElementById("selected-state");
+  targetElement.innerHTML = "";
+  targetElement.appendChild(container);
+}
+
+function generateStateInfoElement(stateData) {
+  const { name, billionaires } = stateData;
+
+  const element =
+    billionaires === 0
+      ? generateEmptyStateText(name)
+      : generateStateInfoText(stateData);
+
+  return element;
+}
+
+function generateEmptyStateText(name) {
+  const element = document.createElement("p");
+  const textNode = document.createTextNode(
+    `There are no billionaires in ${name}`
+  );
+  element.appendChild(textNode);
+
+  return element;
+}
+
+function generateStateInfoText(stateData) {
+  const {
+    name,
+    billionaires,
+    thousandPeopleInPoverty,
+    topHeavyIndex
+  } = stateData;
+
+  const element = document.createElement("div");
+  const p1 = document.createElement("p");
+  const textNode1 = document.createTextNode(
+    `${name} has ${billionaires} billionaire(s) and around ${thousandPeopleInPoverty} thousand people in poverty.`
+  );
+  p1.appendChild(textNode1);
+
+  const p2 = document.createElement("p");
+  const textNode2 = document.createTextNode(
+    `There are roughly ${Math.round(
+      topHeavyIndex * 1000
+    )} people in poverty for every billionaire in ${name}`
+  );
+  p2.appendChild(textNode2);
+  element.appendChild(p1);
+  element.appendChild(p2);
+  return element;
 }
