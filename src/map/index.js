@@ -90,18 +90,24 @@ function generateStateInfoText(stateData) {
   const element = document.createElement("div");
   const p1 = document.createElement("p");
   const textNode1 = document.createTextNode(
-    `${name} has ${billionaires} billionaire(s) and around ${thousandPeopleInPoverty} thousand people in poverty.`
+    `${name} has ${billionaires} billionaire${
+      billionaires > 1 ? "s" : ""
+    } and around ${(
+      thousandPeopleInPoverty * 1000
+    ).toLocaleString()} people in poverty.`
   );
   p1.appendChild(textNode1);
-
-  const p2 = document.createElement("p");
-  const textNode2 = document.createTextNode(
-    `There are roughly ${Math.round(
-      topHeavyIndex * 1000
-    )} people in poverty for every billionaire in ${name}`
-  );
-  p2.appendChild(textNode2);
   element.appendChild(p1);
-  element.appendChild(p2);
+
+  if (billionaires > 1) {
+    const p2 = document.createElement("p");
+    const textNode2 = document.createTextNode(
+      `There are roughly ${Math.round(
+        topHeavyIndex * 1000
+      ).toLocaleString()} people in poverty for every billionaire in ${name}.`
+    );
+    p2.appendChild(textNode2);
+    element.appendChild(p2);
+  }
   return element;
 }
