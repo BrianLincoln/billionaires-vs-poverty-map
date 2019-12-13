@@ -24,19 +24,6 @@ export function generateMap() {
       .style("fill", d => {
         return getStateColor(d);
       });
-
-    // state borders
-    svg
-      .append("path")
-      .attr("class", "state-borders")
-      .attr(
-        "d",
-        path(
-          topojson.mesh(mapData, mapData.objects.states, function(a, b) {
-            return a !== b;
-          })
-        )
-      );
   });
 }
 
@@ -49,7 +36,5 @@ function handleClick(d) {
   const label = document.getElementById("current-state");
   const { name, billionaires } = getBillionaireDataByState(d.id);
 
-  label.innerHTML = `Billionaires in ${name}: ${
-    billionaires !== undefined ? billionaires : "no data"
-  }`;
+  label.innerHTML = `There are ${billionaires} billionaires in ${name}`;
 }

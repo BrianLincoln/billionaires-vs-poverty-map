@@ -31,10 +31,14 @@ export function generateLegend() {
 }
 
 function getLegendItemText(range, index) {
-  if (index + 1 < stateColorMap.length) {
-    const nextStart = `${stateColorMap[index + 1].start}`;
-    return `${range.start}-${nextStart}`;
-  } else {
+  // highest value
+  if (index + 1 === stateColorMap.length) {
     return `${range.start}+`;
   }
+
+  const nextStart = stateColorMap[index + 1].start - 1;
+
+  return nextStart === range.start
+    ? range.start
+    : `${range.start}-${nextStart}`;
 }
