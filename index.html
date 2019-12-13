@@ -19,8 +19,14 @@
         text-align: center;
       }
       .map-wrapper {
-        margin: 0 auto;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .map {
         max-width: 800px;
+        width: 100%;
       }
       .states :hover {
         cursor: pointer;
@@ -36,6 +42,29 @@
         stroke-linecap: round;
         pointer-events: none;
       }
+
+      .legend {
+        list-style-type: none;
+        margin: 0;
+        min-width: 100px;
+        padding: 0;
+      }
+
+      .legend-item {
+        display: flex;
+      }
+
+      .legend-item-colorbox {
+        height: 20px;
+        margin: 0 5px 0 0;
+        width: 20px;
+      }
+
+      @media all and (min-width: 650px) {
+        .map-wrapper {
+          flex-direction: row;
+        }
+      }
     </style>
   </head>
 
@@ -43,8 +72,8 @@
     <h1># of billionaires by state</h1>
     <h2 id="current-state">click a state</h2>
     <div class="map-wrapper">
-      <svg id="map-target"></svg>
+      <svg class="map" id="map-target"></svg>
+      <div id="color-legend-target" class="color-legend"></div>
     </div>
-    <div class="color-legend"></div>
   </body>
 </html>

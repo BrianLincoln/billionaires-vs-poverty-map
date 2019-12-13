@@ -1,4 +1,5 @@
 import { generateMap } from "./map";
+import { generateLegend } from "./legend";
 
-// Generates map and injects it into #map-target
 generateMap();
+generateLegend();
