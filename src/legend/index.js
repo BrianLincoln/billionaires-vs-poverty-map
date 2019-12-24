@@ -1,16 +1,8 @@
 import { stateColorMap } from "../constants";
 
 export function generateLegend() {
-  // create description
-  const description = document.createElement("small");
-  const descriptionTextNode = document.createTextNode(
-    "Top Heavy Index (see below)"
-  );
-  description.appendChild(descriptionTextNode);
-
   // create <ul>
   const list = document.createElement("ul");
-  list.classList.add("legend");
 
   stateColorMap.forEach((range, index) => {
     // create <li>
