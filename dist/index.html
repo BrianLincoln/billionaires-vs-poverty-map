@@ -2,13 +2,118 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Billionaires vs Poverty Map || Brian Lincoln</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", Times, serif sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        background: #333;
+        color: #fff;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 22px;
+        padding: 25px 0;
+        margin: 0 0 25px 0;
+        text-align: center;
+      }
+      h2 {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      .selected-state {
+        text-align: center;
+      }
+      .map-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 50px;
+      }
+      .map {
+        max-width: 800px;
+        width: 100%;
+      }
+      .states {
+        stroke: #000;
+        stroke-width: 0.5px;
+        stroke-linejoin: bevel;
+        stroke-linecap: round;
+      }
+      .states :hover {
+        cursor: pointer;
+        opacity: 0.8;
+        stroke-width: 2px;
+      }
+      .legend {
+        list-style-type: none;
+        margin: 0;
+        min-width: 100px;
+        padding: 0;
+      }
+
+      .legend-item {
+        display: flex;
+        margin-bottom: 3px;
+      }
+
+      .legend-item-colorbox {
+        box-shadow: 0px 1px 1px #ccc;
+        height: 20px;
+        margin: 0 5px 0 0;
+        width: 20px;
+      }
+
+      .footer {
+        background: #444;
+        color: #fff;
+        padding: 25px;
+      }
+
+      .footer a,
+      .footer a:visited {
+        color: #fff;
+      }
+
+      @media all and (min-width: 650px) {
+        .map-wrapper {
+          flex-direction: row;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Season 8 of Got was bad</h1>
-    <svg width="960" height="600"></svg>
-
-    <script type="text/javascript" src="bundle.js"></script>
-  </body>
+    <h1>People in poverty (thousand) per billionaire by state</h1>
+    <div class="map-wrapper">
+      <svg class="map" id="map-target"></svg>
+      <div id="color-legend-target" class="color-legend"></div>
+    </div>
+    <div class="selected-state" id="selected-state">
+      <h2>click a state</h2>
+    </div>
+    <div class="footer">
+      <p>
+        I made up the "top heavy index". It is calculated by dividing the number
+        of people in poverty (thousands) by the number of billionaires.
+      </p>
+      Sources (taken on taken 12/13/2019):
+      <ol>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires"
+            >https://en.wikipedia.org/wiki/List_of_U.S._states_by_the_number_of_billionaires</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate"
+            >https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate</a
+          >
+        </li>
+      </ol>
+    </div>
+  <script type="text/javascript" src="bundle.js"></script></body>
 </html>
